@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import { Hospital } from 'lucide-react';
+import { Building2 } from 'lucide-react';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -30,7 +30,7 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-lg">
         <div className="text-center">
-          <Hospital className="mx-auto h-12 w-12 text-blue-500" />
+          <Building2 className="mx-auto h-12 w-12 text-blue-500" />
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
             Patient Announcement System
           </h2>
