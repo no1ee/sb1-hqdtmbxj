@@ -1,8 +1,7 @@
 module.exports = {
   apps: [{
     name: 'sb1-analysis',
-    script: 'server.js',
-    cwd: '/home/username/nodejs/server',
+    script: './server.js',
     watch: true,
     env: {
       NODE_ENV: 'production',

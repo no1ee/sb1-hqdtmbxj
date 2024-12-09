@@ -14,10 +14,14 @@ async function setupDatabase() {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
+      charset: 'utf8mb4',
+      collation: 'utf8mb4_unicode_ci',
+      timezone: '+00:00',
     });
 
     // Create database if it doesn't exist
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
+    await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME} 
+      CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`);
     await connection.query(`USE ${process.env.DB_NAME}`);
 
     // Create users table
@@ -30,7 +34,7 @@ async function setupDatabase() {
         first_login BOOLEAN DEFAULT true,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-      )
+      ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
     `);
 
     // Create announcements table
@@ -44,7 +48,7 @@ async function setupDatabase() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (created_by) REFERENCES users(id)
-      )
+      ) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
     `);
 
     // Create default admin user if not exists
